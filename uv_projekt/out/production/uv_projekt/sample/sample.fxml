@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<TabPane prefHeight="600.0" prefWidth="780.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <tabs>
+      <Tab>
+         <content>
+            <BorderPane>
+               <right>
+                  <VBox fx:id="information" onDragOver="#onDragOver" opacity="0.4" prefHeight="275.0" prefWidth="170.0" style="-fx-background-color: while;" BorderPane.alignment="CENTER">
+                     <children>
+                        <Label text="File information" textAlignment="CENTER">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="2.0" left="5.0" right="2.0" top="2.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label prefHeight="15.0" prefWidth="41.0" text="Size">
+                           <VBox.margin>
+                              <Insets bottom="2.0" left="5.0" right="2.0" top="2.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label fx:id="size" text="/">
+                           <VBox.margin>
+                              <Insets bottom="2.0" left="5.0" right="2.0" top="2.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label text="Created at">
+                           <VBox.margin>
+                              <Insets bottom="2.0" left="5.0" right="2.0" top="2.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label fx:id="created_at" text="/">
+                           <VBox.margin>
+                              <Insets bottom="2.0" left="5.0" right="2.0" top="2.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label text="Modified at">
+                           <VBox.margin>
+                              <Insets bottom="2.0" left="5.0" right="2.0" top="2.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label fx:id="modified_at" text="/">
+                           <VBox.margin>
+                              <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label text="Name">
+                           <VBox.margin>
+                              <Insets bottom="2.0" left="5.0" right="2.0" top="2.0" />
+                           </VBox.margin>
+                        </Label>
+                        <TextField fx:id="name1" onKeyPressed="#name_update">
+                           <VBox.margin>
+                              <Insets bottom="2.0" left="5.0" right="6.0" top="2.0" />
+                           </VBox.margin>
+                        </TextField>
+                        <CheckBox fx:id="read" mnemonicParsing="false" onAction="#can_read" text="Can Read">
+                           <VBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </VBox.margin>
+                        </CheckBox>
+                        <CheckBox fx:id="execute" mnemonicParsing="false" onAction="#can_execute" text="Can Excecute">
+                           <VBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </VBox.margin>
+                        </CheckBox>
+                        <CheckBox fx:id="write" mnemonicParsing="false" onAction="#can_write" text="Can write">
+                           <VBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </VBox.margin>
+                        </CheckBox>
+                        <Button fx:id="copy" mnemonicParsing="false" onAction="#create_copy" onDragDropped="#save_copies" prefHeight="45.0" prefWidth="164.0" style="-fx-background-color: #A4C52D; -fx-border-radius: 0.0;" text="Copy" textFill="WHITE">
+                           <VBox.margin>
+                              <Insets bottom="10.0" left="5.0" right="6.0" top="10.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="move" mnemonicParsing="false" onAction="#move" onDragDropped="#save_moves" onDragEntered="#onDragOver" prefHeight="45.0" prefWidth="164.0" style="-fx-background-color: #fd8b62;" text="Move" textFill="WHITE">
+                           <VBox.margin>
+                              <Insets bottom="10.0" left="5.0" right="6.0" top="10.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="delete" mnemonicParsing="false" onAction="#onDelete" onDragDropped="#onDragDelete" prefHeight="45.0" prefWidth="164.0" style="-fx-background-image: url('file:../back-arrow.png'); -fx-backgound-repeat: no-repeat; -fx-background-position: center; -fx-background-color: #7E1F2A;" text="Delete" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="11.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="10.0" left="5.0" right="6.0" top="10.0" />
+                           </VBox.margin>
+                        </Button>
+                     </children>
+                     <BorderPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </BorderPane.margin>
+                  </VBox>
+               </right>
+               <center>
+                  <ListView fx:id="ListView1" fixedCellSize="25.0" minWidth="100.0" onDragDetected="#onDrag" onEditCommit="#edit_commit" onEditStart="#edit_start" onMouseClicked="#onListClick1" prefHeight="514.0" prefWidth="440.0" BorderPane.alignment="CENTER">
+                     <BorderPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </BorderPane.margin></ListView>
+               </center>
+               <left>
+                  <ListView id="listview1" fx:id="ListView" editable="true" fixedCellSize="25.0" onDragDetected="#onDragDelete" onDragDropped="#onDragDrop" onDragOver="#onDragOver" onMouseClicked="#onListClick" prefHeight="490.0" prefWidth="160.0" style="-fx-padding: 1px; -fx-border-image-width: 0px;" BorderPane.alignment="CENTER">
+                     <BorderPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </BorderPane.margin>
+                  </ListView>
+               </left>
+               <bottom>
+                  <HBox minWidth="170.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Button fx:id="restore" mnemonicParsing="false" onAction="#restore" opacity="0.4" prefHeight="25.0" prefWidth="160.0" style="-fx-background-color: #61D4FB;" text="Restore" textFill="WHITE" HBox.hgrow="NEVER">
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin></Button>
+                        <TextField fx:id="mkdir" minWidth="100.0" onKeyPressed="#mkdir" onMouseClicked="#mkdir_path" opacity="0.44" text="Create Directory" HBox.hgrow="ALWAYS">
+                           <HBox.margin>
+                              <Insets left="5.0" right="5.0" />
+                           </HBox.margin></TextField>
+                        <Pane prefHeight="28.0" prefWidth="175.0" HBox.hgrow="NEVER" />
+                     </children>
+                     <BorderPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </BorderPane.margin>
+                  </HBox>
+               </bottom>
+               <top>
+                  <HBox BorderPane.alignment="CENTER">
+                     <children>
+                        <Button id="but1" fx:id="btn_return" depthTest="DISABLE" mnemonicParsing="false" onAction="#onclick" prefHeight="25.0" prefWidth="22.0" style="-fx-background-image: url(&quot;file:///C://Users//User//Downloads//uv_projekt//src//back-arrow.png&quot;); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-background-color: transparent;" textFill="#9e7f7f" />
+                        <TextField fx:id="search" onKeyPressed="#start_search" prefHeight="28.0" prefWidth="600.0" style="-fx-max-width: 10000; -fx-min-width: 100;" />
+                        <TextField fx:id="search_map" onKeyPressed="#search_in_file" prefHeight="28.0" prefWidth="170.0" HBox.hgrow="NEVER" />
+                     </children>
+                  </HBox>
+               </top>
+            </BorderPane>
+         </content>
+      </Tab>
+   </tabs>
+</TabPane>
